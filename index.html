@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>עץ יוחסין - משפחת גלזר</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2316a34a'/><path d='M50 20 C35 20 25 32 25 45 C25 55 32 62 40 68 L40 80 L60 80 L60 68 C68 62 75 55 75 45 C75 32 65 20 50 20 Z' fill='%23ffffff'/><path d='M47 80 L47 50 M53 80 L53 55 M47 60 L38 52 M53 58 L62 50 M47 48 L40 42 M53 46 L60 38' stroke='%2316a34a' stroke-width='3' stroke-linecap='round'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -38,6 +39,13 @@
             width: 2px;
             background-color: #cbd5e1;
         }
+
+        /* Highlighting searched nodes */
+        .search-match {
+            outline: 3px solid #eab308 !important;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4) !important;
+            background-color: #fefce8 !important;
+        }
     </style>
 </head>
 <body class="bg-slate-100 min-h-screen text-slate-800">
@@ -54,40 +62,23 @@
             <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
                 <div class="relative flex-1 md:w-64">
                     <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או פרט..." 
-                        class="w-full pl-3 pr-9 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
-                    <svg class="w-4 h-4 absolute right-3 top-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-full pl-8 pr-9 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
+                    <svg class="w-4 h-4 absolute right-3 top-2.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
+                    <!-- Clear search button -->
+                    <button id="clearSearchBtn" class="hidden absolute left-2.5 top-2.5 text-slate-400 hover:text-slate-600 transition p-0.5 rounded-full hover:bg-slate-200" title="ניקוי חיפוש">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
                 </div>
-
-                <select id="genFilter" class="py-2 px-3 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="all">כל הדורות</option>
-                    <option value="0">דור 0 - אבות המשפחה</option>
-                    <option value="1">דור 1 - הבנים/בנות</option>
-                    <option value="2">דור 2 - הנכדים</option>
-                    <option value="3">דור 3 - בני דור 3</option>
-                    <option value="4">דור 4 - נינים</option>
-                    <option value="5">דור 5 - בני נינים</option>
-                </select>
 
                 <button id="expandAllBtn" class="px-3 py-2 text-xs font-semibold bg-slate-200 hover:bg-slate-300 rounded-lg transition">הרחב הכל</button>
                 <button id="collapseAllBtn" class="px-3 py-2 text-xs font-semibold bg-slate-200 hover:bg-slate-300 rounded-lg transition">כווץ הכל</button>
             </div>
         </div>
     </header>
-
-    <!-- Legend -->
-    <div class="bg-white border-b border-slate-200 py-2">
-        <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-3 text-xs font-medium">
-            <span class="text-slate-500 font-semibold">מקרא דורות:</span>
-            <span class="px-2.5 py-1 rounded-full badge-gen-0">דור 0 (אבות)</span>
-            <span class="px-2.5 py-1 rounded-full badge-gen-1">דור 1</span>
-            <span class="px-2.5 py-1 rounded-full badge-gen-2">דור 2</span>
-            <span class="px-2.5 py-1 rounded-full badge-gen-3">דור 3</span>
-            <span class="px-2.5 py-1 rounded-full badge-gen-4">דור 4</span>
-            <span class="px-2.5 py-1 rounded-full badge-gen-5">דור 5</span>
-        </div>
-    </div>
 
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
@@ -109,7 +100,7 @@
 
     <script>
         // Data derived directly from the uploaded PDFs
-        const familyData = {
+        const rawFamilyData = {
             id: "root",
             name: "יהושע-צבי ופרידה-רחל גלזר",
             gen: 0,
@@ -460,7 +451,7 @@
                                         { id: "miryam_l", name: "מרים", gen: 4, dates: "2006" },
                                         { id: "elyada_l", name: "אלידע", gen: 4, dates: "2007" },
                                         { id: "simcha_l", name: "שמחה", gen: 4, dates: "2011" },
-                                        { id: "maayan_l", name: "מעיין", gen: 4, dates: "2014" }
+                                        { id: "maayan_l", name: "מעין", gen: 4, dates: "2014" }
                                     ]
                                 }
                             ]
@@ -471,7 +462,34 @@
             ]
         };
 
-        let activeFilters = { search: '', gen: 'all' };
+        // Helper to replace hyphens between words/Hebrew text with standard Hebrew Maqaf (־)
+        function convertHyphensToHebrewMaqaf(text) {
+            if (typeof text !== 'string') return text;
+            // Replaces hyphen '-' between Hebrew letters, or Hebrew letters and numbers/words with '־'
+            // Preserves ranges like years "1865 - 1918" and HTML/ASCII structure
+            return text.replace(/([\u0590-\u05FF])-([\u0590-\u05FF])/g, '$1־$2')
+                       .replace(/([\u0590-\u05FF])-(\d)/g, '$1־$2')
+                       .replace(/(\d)-([\u0590-\u05FF])/g, '$1־$2');
+        }
+
+        // Recursively convert hyphens in object fields
+        function processFamilyData(node) {
+            const newNode = { ...node };
+            if (newNode.name) newNode.name = convertHyphensToHebrewMaqaf(newNode.name);
+            if (newNode.dates) newNode.dates = convertHyphensToHebrewMaqaf(newNode.dates);
+            if (newNode.location) newNode.location = convertHyphensToHebrewMaqaf(newNode.location);
+            if (newNode.bio) newNode.bio = convertHyphensToHebrewMaqaf(newNode.bio);
+
+            if (newNode.children) {
+                newNode.children = newNode.children.map(processFamilyData);
+            }
+            return newNode;
+        }
+
+        // Processed family data with Hebrew Maqaf (־)
+        const familyData = processFamilyData(rawFamilyData);
+
+        let activeFilters = { search: '' };
 
         // Helper to count nodes
         function countNodes(node) {
@@ -482,11 +500,31 @@
             return count;
         }
 
+        // Helper to generate Google Maps Search URL dynamically for any location
+        function getGoogleMapsUrl(locationStr) {
+            if (!locationStr) return '';
+            
+            // If there's a migration path with arrows (← or ->), take only the final destination
+            let targetLocation = locationStr;
+            if (locationStr.includes('←')) {
+                const parts = locationStr.split('←');
+                targetLocation = parts[parts.length - 1];
+            } else if (locationStr.includes('->')) {
+                const parts = locationStr.split('->');
+                targetLocation = parts[parts.length - 1];
+            }
+
+            // Clean up extra formatted text (e.g. parenthetical notes) for cleaner search query
+            const cleanLocation = targetLocation.replace(/\(.*?\)/g, '').trim();
+            return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanLocation)}`;
+        }
+
         // Render Tree Recursively
         function createTreeNodeHTML(node) {
             const hasChildren = node.children && node.children.length > 0;
             const badgeClass = `badge-gen-${node.gen}`;
             const genClass = `gen-${node.gen}`;
+            const mapsUrl = getGoogleMapsUrl(node.location);
 
             let html = `
                 <div class="tree-node-wrapper mb-3" data-id="${node.id}" data-gen="${node.gen}">
@@ -503,7 +541,14 @@
                                     <span class="font-bold text-slate-900 text-base sm:text-lg">${node.name}</span>
                                     <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${badgeClass}">דור ${node.gen}</span>
                                 </div>
-                                ${node.location ? `<p class="text-xs text-slate-500 mt-0.5">📍 ${node.location}</p>` : ''}
+                                ${node.location ? `
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="text-xs text-slate-500">📍 ${node.location}</span>
+                                        <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" title="פתח בגוגל מפות" class="inline-flex items-center text-xs text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-1.5 py-0.5 rounded font-semibold transition gap-1 border border-blue-200">
+                                            🗺️ <span class="hidden sm:inline">מפות</span>
+                                        </a>
+                                    </div>
+                                ` : ''}
                             </div>
                         </div>
 
@@ -566,39 +611,60 @@
         }
 
         function filterTree() {
-            const query = activeFilters.search.toLowerCase();
-            const selectedGen = activeFilters.gen;
+            // Clean query from quotes, punctuation, hyphens, and Hebrew maqaf for flexible search
+            const rawQuery = activeFilters.search.toLowerCase().trim();
+            const cleanQuery = rawQuery.replace(/["'״׳]/g, '').replace(/[-־]/g, '');
 
             const nodes = document.querySelectorAll('.tree-node-wrapper');
             let matchCount = 0;
+
+            // First reset all cards
+            nodes.forEach(wrapper => {
+                const card = wrapper.querySelector('.card');
+                if (card) card.classList.remove('search-match');
+            });
+
+            if (!cleanQuery) {
+                nodes.forEach(wrapper => wrapper.style.display = 'block');
+                document.getElementById('searchResultsSummary').classList.add('hidden');
+                return;
+            }
+
+            // Create a word boundary regex to match exact words only
+            const escapedQuery = cleanQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const exactWordRegex = new RegExp(`(?:^|\\s|["'״׳,.\\-־\\(])${escapedQuery}(?=$|\\s|["'״׳,.\\-־\\)])`, 'i');
 
             nodes.forEach(wrapper => {
                 const nodeId = wrapper.getAttribute('data-id');
                 const node = findNode(familyData, nodeId);
                 if (!node) return;
 
-                const nameMatch = node.name.toLowerCase().includes(query);
-                const locMatch = node.location ? node.location.toLowerCase().includes(query) : false;
-                const bioMatch = node.bio ? node.bio.toLowerCase().includes(query) : false;
-                const textMatch = !query || nameMatch || locMatch || bioMatch;
+                const nameClean = (node.name || '').toLowerCase().replace(/[-־]/g, ' ');
+                const locClean = (node.location || '').toLowerCase().replace(/[-־]/g, ' ');
+                const bioClean = (node.bio || '').toLowerCase().replace(/[-־]/g, ' ');
 
-                const genMatch = selectedGen === 'all' || node.gen.toString() === selectedGen;
+                const textMatch = exactWordRegex.test(nameClean) || exactWordRegex.test(locClean) || exactWordRegex.test(bioClean);
 
-                if (textMatch && genMatch) {
+                if (textMatch) {
                     wrapper.style.display = 'block';
                     matchCount++;
-                    // Expand parents if searching
-                    if (query) {
-                        let p = wrapper.parentElement;
-                        while (p && !p.classList.contains('max-w-7xl')) {
-                            if (p.classList.contains('children-container')) {
-                                p.classList.remove('hidden');
-                                const pId = p.id.replace('children-', '');
-                                const icon = document.getElementById(`icon-${pId}`);
-                                if (icon) icon.innerText = '▼';
-                            }
-                            p = p.parentElement;
+                    // Highlight matching card
+                    const card = wrapper.querySelector('.card');
+                    if (card) card.classList.add('search-match');
+
+                    // Expand and show all parent containers
+                    let p = wrapper.parentElement;
+                    while (p && !p.classList.contains('max-w-7xl')) {
+                        if (p.classList.contains('children-container')) {
+                            p.classList.remove('hidden');
+                            const pId = p.id.replace('children-', '');
+                            const icon = document.getElementById(`icon-${pId}`);
+                            if (icon) icon.innerText = '▼';
                         }
+                        if (p.classList.contains('tree-node-wrapper')) {
+                            p.style.display = 'block';
+                        }
+                        p = p.parentElement;
                     }
                 } else {
                     wrapper.style.display = 'none';
@@ -606,18 +672,16 @@
             });
 
             const summary = document.getElementById('searchResultsSummary');
-            if (query || selectedGen !== 'all') {
-                summary.classList.remove('hidden');
-                summary.innerText = `נמצאו ${matchCount} תוצאות לפי הסינון הנוכחי`;
-            } else {
-                summary.classList.add('hidden');
-            }
+            summary.classList.remove('hidden');
+            summary.innerText = `נמצאו ${matchCount} תוצאות מדויקות עבור המילה "${cleanQuery}" - התוצאות וענפי האב מורחבים ומובלטים במסגרת מוזהבת`;
         }
 
         // Modal Handler
         function openDetails(id) {
             const node = findNode(familyData, id);
             if (!node) return;
+
+            const mapsUrl = getGoogleMapsUrl(node.location);
 
             const modalContent = document.getElementById('modalContent');
             modalContent.innerHTML = `
@@ -629,9 +693,14 @@
                     </div>
 
                     ${node.location ? `
-                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-                            <span class="text-xs font-bold text-slate-400 block mb-1">מקום מגורים/הגירה:</span>
-                            <span class="text-sm text-slate-800 font-medium">📍 ${node.location}</span>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 flex items-center justify-between gap-2">
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 block mb-1">מקום מגורים/הגירה:</span>
+                                <span class="text-sm text-slate-800 font-medium">📍 ${node.location}</span>
+                            </div>
+                            <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 flex items-center gap-1 text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg transition shadow-sm">
+                                🗺️ ניווט במפות
+                            </a>
                         </div>
                     ` : ''}
 
@@ -660,14 +729,28 @@
             const treeContainer = document.getElementById('treeContainer');
             treeContainer.innerHTML = createTreeNodeHTML(familyData);
 
+            const searchInput = document.getElementById('searchInput');
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
+
             // Controls
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                activeFilters.search = e.target.value;
+            searchInput.addEventListener('input', (e) => {
+                const val = e.target.value;
+                activeFilters.search = val;
+                
+                if (val.trim().length > 0) {
+                    clearSearchBtn.classList.remove('hidden');
+                } else {
+                    clearSearchBtn.classList.add('hidden');
+                }
+                
                 filterTree();
             });
 
-            document.getElementById('genFilter').addEventListener('change', (e) => {
-                activeFilters.gen = e.target.value;
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                activeFilters.search = '';
+                clearSearchBtn.classList.add('hidden');
+                searchInput.focus();
                 filterTree();
             });
 
