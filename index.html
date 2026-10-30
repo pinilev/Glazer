@@ -79,6 +79,26 @@
         </div>
     </header>
 
+    <!-- Dynamic Stats Bar Header -->
+    <section class="bg-slate-800 text-white py-3 shadow-inner border-b border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold text-slate-300">📊 סיכום שושלת:</span>
+                    <span class="bg-blue-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalPersons">117 נפשות</span>
+                    <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalDescendants">115 צאצאים</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-2" id="genBreakdown">
+                    <span class="px-2 py-0.5 rounded badge-gen-1 font-semibold">דור 1: 11</span>
+                    <span class="px-2 py-0.5 rounded badge-gen-2 font-semibold">דור 2: 16</span>
+                    <span class="px-2 py-0.5 rounded badge-gen-3 font-semibold">דור 3: 33</span>
+                    <span class="px-2 py-0.5 rounded badge-gen-4 font-semibold">דור 4: 39</span>
+                    <span class="px-2 py-0.5 rounded badge-gen-5 font-semibold">דור 5: 16</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         <div id="searchResultsSummary" class="hidden mb-4 p-3 bg-blue-50 border border-blue-200 text-blue-800 rounded-lg text-sm"></div>
@@ -105,29 +125,33 @@
             gen: 0,
             dates: "18-- - 19--",
             location: "יורבורג, ליטא (על גדות נהר הניימן)",
-            bio: "גרו ביורבורג, ליטא. היו להם פרדסים גדולים, פונדק דרכים, מאפייה ופרה שרעתה על גדות נהר הניימן. יהושע-צבי היה תלמיד חכם גדול ובקי בהלכה, בעל ספרייה גדולה של ספרי קודש שלא הייתה כמותה בכל האזור, וחבר לעט של הרב יצחק-אלחנן ספקטור (הרב מקובנה 1896-1917). היו להם 11 צאצאים.",
+            bio: "גרו ביורבורג, ליטא. היו להם פרדסים גדולים, פונדק דרכים, מאפייה (שם אירע הסיפור המפורסם בו אחת הבנות בלעה זבוב בביה\"מ כדי להגן על המאפייה) ופרה שרעתה על גדות נהר הניימן. יהושע-צבי היה תלמיד חכם גדול ובקי בהלכה, בעל ספרייה גדולה של ספרי קודש שלא הייתה כמותה בכל האזור, וחבר לעט של הרב יצחק-אלחנן ספקטור (הרב מקובנה 1896-1917). היו להם 11 צאצאים.",
             children: [
                 {
                     id: "malka_rivkin",
-                    name: "1. מלכה [1865? - 1918/1919] והרב ראובן [18-- - 1953] ריבקין",
+                    name: "1. מלכה [1865? - 1918/1919] והרב ראובן [1874 - 1953] ריבקין",
                     gen: 1,
-                    dates: "מלכה: 1865? - 1918/1919 | הרב ראובן: 18-- - 1953",
-                    location: "ליטא ← ניו יורק ← בולטימור, מרילנד",
-                    bio: "נישאו בליטא בשנת 18--. היגרו עם 3 בנים לארה\"ב והגיעו לניו יורק ב-1903. השתקעו בבולטימור. בהמשך נולדו 3 בנים נוספים. הרב ראובן היה ראש בית הדין של בולטימור והיה ביחסי ידידות עם הקרדינל גיבונס (ארכיבישוף בולטימור). מלכה נפטרה במגפת השפעת ב-1918 או 1919. לאחר פטירתה, התחתן הרב ראובן שנית.",
+                    dates: "מלכה: 1865? - 1918/1919 | הרב ראובן: 1874 - 6.1.1953",
+                    location: "ליטא ← ניו יורק ← לוורנס, מסצ'וסטס ← בולטימור, מרילנד",
+                    bio: "נישאו בליטא בשנת 18--. הרב ראובן נסמך לרבנות בשנת 1890 בגיל 17 בישיבת קובנה. היגרו עם המשפחה לארה\"ב ב-1906. הגיעו לבולטימור מלוורנס, מסצ'וסטס ב-1914. מ-1919 כיהן הרב ראובן כרב עדת 'עץ חיים' והיה זקן רבני אורתודוקסיה בבולטימור. היה ציוני נלהב, יזם ועבד יחד עם ד\"ר חיים ויצמן. היה ביחסי ידידות הדוקים עם הקרדינל גיבונס (ששוחח עמו עברית שוטפת). מלכה נפטרה במגפת השפעת ב-1918 או 1919. לאחר פטירתה נישא הרב ראובן שנית ללנה (מאלקע). במסמכי המשפחה מצוינת שאלה היסטורית לגבי קשר משפחתי לראי\"ה קוק.",
                     children: [
                         {
                             id: "baruch_rivkin",
-                            name: "ברנרד-ברוך-משה [18-- - 1977] ורות [1900 - 2001] ריבקין",
+                            name: "ברנרד-ברוך-משה [1895 - 1977] ורות [1900 - 2001] ריבקין",
                             gen: 2,
-                            dates: "ברוך: 18-- - 1977 | רות: 1900 - 2001",
+                            dates: "ברוך: 1895 - 1977 | רות: 1.8.1900 - 6.2001 (נפטרה בגיל 101)",
                             location: "בולטימור ← בוסטון, מסצ'וסטס",
-                            bio: "עזב את בולטימור כשהיה צעיר והתיישב בבוסטון. ביקר בבני ברק בשנת 1962.",
+                            bio: "עזב את בולטימור כשהיה צעיר והתיישב בבוסטון. אשתו רות נפטרה בגיל 101 והייתה בוגרת הרווארד המבוגרת ביותר בחיים. ביקר בבני ברק בשנת 1962.",
                             children: [
                                 {
                                     id: "steven_rivkin",
                                     name: "סטיבן-רוברט-זוסיה ומרי ריבקין",
                                     gen: 3,
-                                    location: "בת'סדה, מרילנד, ארה\"ב"
+                                    location: "בת'סדה, מרילנד, ארה\"ב",
+                                    children: [
+                                        { id: "sarah_rivkin", name: "שרה-יהודית [1971] ומארק ברנן", gen: 4, dates: "1971", bio: "בתם של סטיבן ואשתו הראשונה מריאן אוסטרביס." },
+                                        { id: "jesse_rivkin", name: "ג'סי [1978] ריבקין", gen: 4, dates: "1978", bio: "בנם של סטיבן ומרי." }
+                                    ]
                                 },
                                 {
                                     id: "malcolm_david_rivkin",
@@ -145,14 +169,14 @@
                             id: "harvey_rivkins",
                             name: "הארווי-חיים [1901? - 1993] ריבקינס",
                             gen: 2,
-                            dates: "1901? - 1993",
+                            dates: "1901? - 8.1993 (נפטר בגיל 93)",
                             location: "ארה\"ב",
                             bio: "הוסיף S לסוף שם המשפחה שלו (Rivkins).",
                             children: [
-                                { id: "malcolm_joan_rivkins", name: "מלקולם וג'ואן ריבקינס", gen: 3, location: "סונומה, קליפורניה" },
+                                { id: "malcolm_joan_rivkins", name: "מלקולם [1924?] וג'ואן [נישאו 1951] ריבקינס", gen: 3, location: "סונומה, קליפורניה" },
                                 {
                                     id: "henia_rivkins",
-                                    name: "הניה (אנג'ה) ריבקינס",
+                                    name: "הניה (אנג'ה / Anja) ריבקינס",
                                     gen: 3,
                                     location: "סן פרנסיסקו, קליפורניה",
                                     bio: "נולדה בבולטימור, מתגוררת כיום בסן פרנסיסקו לאחר שנים רבות באנגליה, בקאריביים ובאיטליה.",
@@ -169,6 +193,7 @@
                             gen: 2,
                             dates: "1899 - 1984",
                             location: "בולטימור, מרילנד",
+                            bio: "לא היו להם ילדים.",
                             children: [
                                 { id: "samson_gregory", name: "שמשון-גרגורי [18-- - 1961] ריבקין", gen: 3, dates: "18-- - 1961" }
                             ]
@@ -182,7 +207,7 @@
                             children: [
                                 { id: "robert_h_r", name: "רוברט (בוב) ריבקין", gen: 3 },
                                 { id: "joseph_j_r", name: "יוסף (ג'ו) ריבקין", gen: 3 },
-                                { id: "lynn_rosenfeld", name: "לין-רחל רוזנפלד", gen: 3, location: "יישוב שורשים, גליל", bio: "עלתה ארצה בשנת 1981. טלפון היסטורי: 04-9902406", children: [
+                                { id: "lynn_rosenfeld", name: "לין-רחל רוזנפלד", gen: 3, location: "יישוב שורשים, משגב, גליל", bio: "עלתה ארצה בשנת 1981 והתיישבה ביישוב שורשים. טלפון היסטורי: 04-9902406", children: [
                                     { id: "yaniv_r", name: "יניב", gen: 4 },
                                     { id: "rakefet_r", name: "רקפת", gen: 4 },
                                     { id: "nancy_malka", name: "ננסי-מלכה-שמחה", gen: 4 }
@@ -194,9 +219,12 @@
                             id: "sholem_solly_rivkin",
                             name: "שלום-סאלם (סולי) [1909 - 1994] וליבה ריבקין",
                             gen: 2,
-                            dates: "1909 - 1994",
+                            dates: "9.2.1909 - 10.6.1994",
                             children: [
-                                { id: "robert_m_r", name: "רוברט (בוב) מ' ריבקין", gen: 3, location: "9910 Shoshone way, Randallstown, MD USA 21133", bio: "ביקר בישראל ב-1967 (כחייל צבא ארה\"ב שהוצב בגרמניה)." },
+                                { id: "robert_m_r", name: "רוברט (בוב) מ' וג'ין (יעלה) ריבקין", gen: 3, location: "9910 Shoshone way, Randallstown, MD USA 21133", bio: "ביקר בישראל ב-1967 כחייל בצבא ארה\"ב. תרם את החופה הניידת של אביו לחברה ההיסטורית בבולטימור.", children: [
+                                    { id: "faye_rachel_r", name: "פיי-רחל [1967] ריבקין", gen: 4, dates: "27.7.1967", location: "ניו ג'רזי" },
+                                    { id: "richard_benjamin_r", name: "ריצ'רד-בנימין [1970] ריבקין", gen: 4, dates: "3.4.1970", location: "סייקסוויל, מרילנד" }
+                                ]},
                                 { id: "alan_ilene_r", name: "אלן מ' ואילין ריבקין", gen: 3, location: "בולטימור, מרילנד", bio: "מורה.", children: [{ id: "stacy_r", name: "סטייסי", gen: 4 }] },
                                 { id: "baruch_bruce_r", name: "ברוך-ברוס וברכה ריבקין", gen: 3, location: "6308 N. Whipple St., Chicago IL USA 60659", bio: "טלפון: 1-773-7430197", children: [
                                     { id: "shaul_miriam", name: "שאול ומרים ריבקין", gen: 4, location: "קליבלנד, אוהיו", children: [
@@ -214,26 +242,26 @@
                 },
                 { id: "velve_glazer", name: "2. וולווה גלזר", gen: 1, location: "ארה\"ב", bio: "היגר לארה\"ב וייתכן שהיה הרופא של אחד הנשיאים." },
                 { id: "shimon_glazer", name: "3. שמעון גלזר", gen: 1, bio: "התנגד לפוגרום באומץ. כנראה היגר לארה\"ב." },
-                { id: "dvora_lea_l", name: "4. דבורה-לאה לוויתן [18-- - 1961]", gen: 1, dates: "נפטרה 28.2.1961", location: "ליטא ← לונדון ← ירושלים", bio: "איבדה בליטא את השימוש בידה בניסיון להגן על אביה במהלך פוגרום (הייתה לה יד תותבת מעץ עטופה בעור). למרות נכותה הצליחה לרקום. הייתה נשואה, גרה בלונדון ללא ילדים. עלתה לישראל, יצחק לב היה האפוטרופוס שלה. נקברה בסנהדריה." },
+                { id: "dvora_lea_l", name: "4. דבורה-לאה לוויתן [18-- - 1961]", gen: 1, dates: "נפטרה 28.2.1961", location: "ליטא ← לונדון ← ירושלים", bio: "איבדה בליטא את השימוש בידה בניסיון להגן על אביה במהלך פוגרום (הייתה לה יד תותבת מעץ עטופה בעור). למרות נכותה הצליחה לרקום ביד אחת. הייתה נשואה, גרה בלונדון ללא ילדים. עלתה לישראל, יצחק לב היה האפוטרופוס שלה. נקברה בסנהדריה בירושלים בסמוך לבעלה." },
                 {
                     id: "pesia_alperovich",
-                    name: "5. פסיה [18-- - 19--] וברוך [18-- - 19--] אלפרוביץ'",
+                    name: "5. פסיה [1880 - 1959] וברוך [18-- - 1927?] אלפרוביץ'",
                     gen: 1,
-                    location: "מוסקבה ← בני ברק",
-                    bio: "בעלי חנות כלי בית במוסקבה. פסיה עלתה ממוסקבה ב-1934 והייתה מחלוצי זיכרון מאיר בבני ברק. ברוך נהרג בתאונת דרכים ברוסיה.",
+                    dates: "פסיה: 1880 - 1959 | ברוך: 18-- - 1927?",
+                    location: "מוסקבה ← ריגה ← בני ברק",
+                    bio: "בעלי חנות למוצרי זכוכית וכלי בית במוסקבה. ברוך נהרג בתאונת חשמלית במוסקבה ככל הנראה ב-1927. פסיה עלתה מריגה לארץ ישראל עם בתה אידה (יהודית) ב-1934 והייתה מראשוני המתיישבים בשכונת זיכרון מאיר בבני ברק.",
                     children: [
                         {
                             id: "ida_gershon",
-                            name: "אידה [19-- - 1992] ויעקב [19-- - 1977] גרשון",
+                            name: "אידה (יהודית) [1906 - 1992] ויעקב [1912 - 1981] גרשון",
                             gen: 2,
-                            location: "בני ברק",
-                            bio: "יעקב היה בעל מוסך ברחוב צ'לנוב בתל אביב. גרו שנים רבות בבני ברק ונקברו בכפר עציון.",
+                            dates: "אידה: 1906 - 1992 | יעקב: 1912 - 1981",
+                            location: "בני ברק ← הוד השרון",
+                            bio: "יעקב היה בעל מוסך ברחוב צ'לנוב בתל אביב. גרו שנים רבות בבני ברק ולאחר מכן בהוד השרון. נקברו בכפר עציון.",
                             children: [
-                                { id: "bracha_g", name: "ברכה", gen: 3 },
-                                { id: "mirit_g", name: "מירית", gen: 3 },
-                                { id: "tzachi_g", name: "צחי", gen: 3 },
-                                { id: "nachum_g", name: "נחום", gen: 3, location: "וושינגטון DC" },
-                                { id: "daniel_g", name: "דניאל", gen: 3 }
+                                { id: "bracha_g", name: "ברכה מניסטרסקי (גרשון)", gen: 3, children: [{ id: "nirit_m", name: "נירית", gen: 4 }, { id: "tzachi_m", name: "צחי", gen: 4 }] },
+                                { id: "mirit_g", name: "נירית רבקה אלנבוגן", gen: 3 },
+                                { id: "nachum_g", name: "נחום גרשון", gen: 3, location: "וושינגטון DC, ארה\"ב", bio: "מומחה לוויזואליזציה וסיפור סיפורים (Visualization & Storytelling) ב-MITRE Corporation.", children: [{ id: "daniel_g", name: "דן (דניאל) גרשון", gen: 4 }] }
                             ]
                         }
                     ]
@@ -241,19 +269,20 @@
                 { id: "chayim_glazer", name: "6. חיים גלזר", gen: 1, bio: "אין מידע נוסף." },
                 {
                     id: "aharon_glazer",
-                    name: "7. אהרון [1872 - 1939?/1942?] ודינה [1876 - 1941?/1942?] גלזר",
+                    name: "7. אהרון [1872 - 1939?/1942?] ודינה [1876 - 1941?/1943?] גלזר",
                     gen: 1,
-                    dates: "אהרון: 1872 - ~1939/1942 | דינה (לבית איוונסקי): 1876 - ~1941/1942",
-                    bio: "אהרון נולד ביורבורג, היה 'ילד פלא' שטופח ע\"י חזן מקניגסברג, למד בקונסרבטוריון בברלין, ושירת כמנצח תזמורת כלי נשיפה בצבא הצאר. עבד במפעל לניקוי מעיים ועורות של חותנו, והלחין קטעי חזנות. נפל בשבי הגרמני במלחה\"ע ה-1, ונרצח בפורט התשיעי בשואה. אשתו דינה נולדה בקובנה, הייתה מיילדת שלמדה באסטוניה. נספתה בגטו קובנה ממחלה.",
+                    dates: "אהרון: 1872 - ~1939/1942 | דינה (לבית איוונסקי): 1876 - ~1941/1943",
+                    location: "יורבורג ← קובנה (רח' Muziejaus 2-8)",
+                    bio: "אהרון נולד ביורבורג, היה 'ילד פלא' שטופח מגיל 12 ע\"י החזן המפורסם אדוארד בירנבאום מקניגסברג, למד בקונסרבטוריון בברלין, ושירת כמנצח תזמורת בצבא הצאר בקווקז. ניגן בכל הכלים. דינה למדה מיילדות בדורפאט ועבדה בבי\"ח ליולדות בקובנה. התגוררו במתחם הבניינים המשפחתי של משה איוונסקי בקובנה ברחוב המוזיאון (Muziejaus 2-8) על שפת הניימן. אהרון עבד במפעל לניקוי מעיים ועורות של חותנו, והיה חבר הפילהרמונית של קובנה. במלחה\"ע ה-1 ניצח על תזמורת בשבי בבוהמיה. נרצח בפורט התשיעי בקובנה בשואה, ודינה נספתה בגטו קובנה מדלקת ריאות. הילדים למדו בגימנסיה העברית (רעיה הייתה בת כיתתה של לאה גולדברג) ועלו לארץ בשנות ה-30.",
                     children: [
                         {
                             id: "raaya_azulai",
                             name: "רעיה [1908 - 1998] ויהודה [1902 - 1993] אזולאי",
                             gen: 2,
-                            location: "חיפה",
-                            bio: "רעיה עלתה ארצה ב-1930. הכירה את יהודה אזולאי דרך שידוך של בת דודתה לינה. יהודה קנה מגרש ב-1933 ובנה את ביתם ברחוב מסדה 26 בחיפה.",
+                            location: "חיפה (רחוב מסדה 26)",
+                            bio: "רעיה עלתה ארצה ב-1930. הכירה את יהודה אזולאי דרך שידוך של בת דודתה לינה לויטה. יהודה קנה מגרש ב-1933 ובנה את ביתם ברחוב מסדה 26 בחיפה.",
                             children: [
-                                { id: "ora_venig", name: "אורה ונתן וניג", gen: 3, location: "חיפה", children: [{ id: "anat_v", name: "ענת", gen: 4 }, { id: "guy_v", name: "גיא", gen: 4 }] },
+                                { id: "ora_venig", name: "אורה ונתן וניג", gen: 3, location: "חיפה", bio: "ביקרה כתינוקת בת שנה וחצי בקובנה ב-1933 והסעירה את המשפחה.", children: [{ id: "anat_v", name: "ענת", gen: 4 }, { id: "guy_v", name: "גיא", gen: 4 }] },
                                 { id: "carmela_n", name: "כרמלה ונחום", gen: 3, location: "קריית אתא", children: [{ id: "talya_g", name: "טליה וגיא", gen: 4 }] },
                                 { id: "mordechai_d", name: "מרדכי ודפנה", gen: 3 },
                                 { id: "ronit_y", name: "רונית ויעקב", gen: 3, location: "חיפה", children: [{ id: "arnon_a", name: "ארנון", gen: 4 }, { id: "revital_a", name: "רויטל", gen: 4 }] }
@@ -264,22 +293,22 @@
                             name: "גבריאל [1911 - 1994] ומירה [1911? - 1972?] גלזר",
                             gen: 2,
                             location: "חיפה",
-                            bio: "עלה לארץ ב-1936. עבד כפקיד במשרד הדואר, ועם פרוץ מלחה\"ע ה-2 התגייס לצבא הבריטי.",
+                            bio: "עלה לארץ ב-1936 ללמוד בטכניון. עבד כפקיד במשרד הדואר, ועם פרוץ מלחה\"ע ה-2 התגייס לצבא הבריטי.",
                             children: [
-                                { id: "aharon_renan", name: "אהרון ורות רנן", gen: 3, location: "ירושלים", bio: "מנהל בית ספר למוזיקה.", children: [{ id: "guy_renan", name: "גיא", gen: 4 }, { id: "itai_renan", name: "איתי", gen: 4 }, { id: "mira_renan", name: "מירה", gen: 4 }] },
-                                { id: "oded_glazer", name: "עודד ולאה גלזר", gen: 3, location: "חיפה", bio: "רופא.", children: [{ id: "yoav_g", name: "יואב", gen: 4 }, { id: "avigail_g", name: "אביגיל", gen: 4 }] },
+                                { id: "aharon_renan", name: "אהרון רנן ורות רנן", gen: 3, location: "ירושלים", bio: "מנהל בית ספר למוזיקה.", children: [{ id: "guy_renan", name: "גיא", gen: 4 }, { id: "itai_renan", name: "איתי", gen: 4 }, { id: "mira_renan", name: "מירה", gen: 4 }] },
+                                { id: "oded_glazer", name: "עודד גלזר ולאה גלזר", gen: 3, location: "חיפה", bio: "רופא.", children: [{ id: "yoav_g", name: "יואב", gen: 4 }, { id: "avigail_g", name: "אביגיל", gen: 4 }] },
                                 { id: "chana_amit", name: "חנה ודוד עמית ז\"ל", gen: 3, location: "כפר עציון וירושלים", bio: "גרו ונקברו בכפר עציון.", children: [{ id: "eitan_am", name: "איתן", gen: 4 }, { id: "ayala_am", name: "איילה", gen: 4 }, { id: "rivka_am", name: "רבקה", gen: 4 }, { id: "ariel_am", name: "אריאל", gen: 4 }, { id: "tal_am", name: "טל", gen: 4 }] }
                             ]
                         },
                         {
                             id: "imanoel_glazer",
-                            name: "עמנואל [1913 - 1985] ומרסל [1918 - 1990] גלזר",
+                            name: "עמנואל (מוניה) [1913 - 1985] ומרסל [1918 - 1990] גלזר",
                             gen: 2,
                             location: "חיפה",
-                            bio: "למד טכנאות שיניים. עלה ארצה באופן בלתי חוקי ב-1934 כשהגיע באונייה כ'איש צוות' של ביתן מפעל הנקניקים הליטאי ליריד המזרח בת\"א. מצא מיד עבודה בבנק 'קופת עם' בחיפה.",
+                            bio: "למד טכנאות שיניים בקובנה. עלה ארצה באופן בלתי חוקי ב-1934 כשהגיע באונייה כ'איש צוות' של ביתן מפעל הנקניקים הליטאי 'רוזמרין' ליריד המזרח בת\"א. מצא מיד עבודה בבנק 'קופת עם' בחיפה.",
                             children: [
-                                { id: "dina_e", name: "דינה ואליעזר", gen: 3, children: [{ id: "shiri_d", name: "שירי", gen: 4 }, { id: "noam_d", name: "נועם", gen: 4 }] },
-                                { id: "orna_i", name: "אורנה ועידו", gen: 3, children: [{ id: "yoav_i", name: "יואב", gen: 4 }] }
+                                { id: "dina_e", name: "דינה פינקמן ואליעזר פינקמן", gen: 3, bio: "אליעזר מרצה/חוקר בטכניון. שכלו את אחת מבנותיהן ככל הנראה בשנת 2001.", children: [{ id: "shiri_d", name: "שירי פינקמן", gen: 4 }, { id: "noam_d", name: "נועם", gen: 4 }] },
+                                { id: "orna_i", name: "אורנה בן ארי (גרושה)", gen: 3, children: [{ id: "yoav_i", name: "יואב", gen: 4 }] }
                             ]
                         }
                     ]
@@ -293,10 +322,18 @@
                     bio: "בעלה של לאה, דוד קליין, היה שוטר והם היו חשוכי ילדים. לאה הייתה אהובה מאוד, בשלנית שהכינה ממתקים מסורתיים כמו טייגלאך ואינגבערלאך.",
                     children: [
                         { id: "chana_blum", name: "חנה בלומנטל [19-- - 1972]", gen: 2, bio: "אמנית. נולדה בליטא, עלתה ארצה מרוסיה." },
-                        { id: "yakov_blum", name: "יעקב בלומנטל", gen: 2, location: "אוסטרליה", bio: "ניצול שואה עם מספר מקועקע על זרועו. עבד בארץ כטכנאי רדיו והיגר לאוסטרליה בשנות ה-50.", children: [{ id: "mula_b", name: "מולה", gen: 3, location: "מלבורן" }, { id: "faige_b", name: "פייגה", gen: 3, location: "אוסטרליה" }] },
-                        { id: "bluma_levin", name: "בלומה ולוין", gen: 2, location: "וילנה, ליטא" },
-                        { id: "yona_wolf", name: "יונה-נינה וסמואל וולף", gen: 2, location: "ראשון לציון", bio: "עלתה ארצה עם שני בניה באמצע שנות ה-1990.", children: [{ id: "david_w", name: "דוד", gen: 3 }, { id: "michael_w", name: "מיכאל", gen: 3 }] },
-                        { id: "galya_b", name: "גליה", gen: 2, location: "רחוב הפרדס הראשון 5/13, ראשון לציון 75209", bio: "עלתה ארצה בתחילת שנות ה-1970." },
+                        { id: "yakov_blum", name: "יעקב בלומנטל", gen: 2, location: "אוסטרליה", bio: "ניצול שואה עם מספר מקועקע על זרועו. עבד בארץ כטכנאי רדיו והיגר לאוסטרליה בשנות ה-50. בנו מייקל מתגורר באזור מלבורן.", children: [{ id: "mula_b", name: "מולה (מייקל) בלומנטל", gen: 3, location: "מלבורן, אוסטרליה" }, { id: "faige_b", name: "פייגה", gen: 3, location: "אוסטרליה" }] },
+                        {
+                            id: "bluma_levin",
+                            name: "בלומה ואלחנן לוין",
+                            gen: 2,
+                            location: "וילנה, ליטא",
+                            children: [
+                                { id: "galya_b", name: "גליה לוין", gen: 3, location: "רחוב הפרדס הראשון 5/13, ראשון לציון 75209", bio: "עלתה ארצה בתחילת שנות ה-1970." },
+                                { id: "yona_wolf", name: "יונה-נינה וסמואל (מולה) וולף", gen: 3, location: "ראשון לציון", bio: "עלתה ארצה עם שני בניה באמצע שנות ה-1990.", children: [{ id: "david_w", name: "דוד וולף", gen: 4 }, { id: "michael_w", name: "סאשה (מיכאל) וולף", gen: 4 }] },
+                                { id: "misha_levin", name: "מישה (משה) לוין", gen: 3, location: "וילנה, ליטא" }
+                            ]
+                        },
                         { id: "moshe_blum", name: "משה בלומנטל", gen: 2, bio: "נרצח בליטא על ידי גרמני." }
                     ]
                 },
@@ -306,8 +343,8 @@
                     name: "10. פייגה-מיכל [1883 - 1974] ונתן-נטע [1883 - 1939] לב",
                     gen: 1,
                     dates: "פייגה-מיכל: 1883 - 1974 | נתן-נטע: 1883 - 1939",
-                    location: "מינסק ← אורנבורג ← מלאחובקה ← אנגליה ← אודסה ← תל אביב ← בני ברק",
-                    bio: "פייגה-מיכל הייתה בת 30 כשנישאה לנתן-נטע במינסק (בחצי השני של 1914, חנוכה). נתן-נטע היה סוחר בעצים ובעורות. גרו בסיביר (אורנבורג) ובמלאחובקה. בשנת 1927 עברה פייגה למעלה משנה לאנגליה עם שני הבנים ולאחר מכן חזרה למלאחובקה. נולדו להם עוד שני בנים שנפטרו בגיל צעיר. ב-1936 קיבלו אישור לעזוב את רוסיה, מכרו מכונה לייצור גומי, ועלו לארץ דרך אודסה. השתקעו בתל אביב ואח\"כ בבני ברק.",
+                    location: "מינסק, בלארוס ← אורנבורג, סיביר ← מלאחובקה ← אנגליה ← אודסה ← תל אביב ← בני ברק",
+                    bio: "פייגה-מיכל הייתה בת 30 כשנישאה לנתן-נטע במינסק, בלארוס (בחצי השני של 1914, חנוכה). נתן-נטע היה סוחר בעצים ובעורות בליטא. גרו תחילה באורנבורג (סיביר) ובמלאחובקה (ליד מוסקבה). בשנת 1927 עברה פייגה למעלה משנה לאנגליה עם שני הבנים ולאחר מכן חזרה למלאחובקה. ב-1936 בדרך נס קיבלו אישור לעזוב את רוסיה, מכרו מכונה לייצור גומי שהחזיקו שנים לשימוש עתידי, ונסעו ממלאחובקה לאודסה (אוקראינה) ומשם עלו לארץ. השתקעו בתל אביב ואח\"כ בבני ברק.",
                     children: [
                         {
                             id: "yehosua_tzvi_lev",
@@ -315,7 +352,7 @@
                             gen: 2,
                             dates: "יהושע-צבי: 1918 - 2001 | יולנדה-זמרודה: 1930? - 1984",
                             location: "בני ברק",
-                            bio: "נולד בסיביר. היה חלק מה'פלוגה הדתית' שהוצבה בבן-שמן ב-1948.",
+                            bio: "נולד באורנבורג (סיביר), רוסיה, והיה בן 4 כשהמשפחה עברה למלאחובקה ליד מוסקבה. עלה עם הוריו ב-1936. היה חלק מה'פלוגה הדתית' שהוצבה בבן-שמן ב-1948.",
                             children: [
                                 {
                                     id: "natan_lev_dr",
@@ -359,7 +396,7 @@
                             gen: 2,
                             dates: "יצחק: 1923 - 2008 | רות: 1937 - 2015",
                             location: "בני ברק ← רח' שמעון 9, עפרה (ת.ד. 6, 90627)",
-                            bio: "יצחק היה מהנדס אלקטרוניקה ובח\"ק בצה\"ל במשך 40 שנה. רות הייתה מורה לעברית והיסטוריה. נקברו בעפרה. טלפון היסטורי: 02-9972417",
+                            bio: "יצחק היה מהנדס אלקטרוניקה וקצין-מהנדס בבח\"ק בצה\"ל במשך 40 שנה. רות הייתה מורה לעברית והיסטוריה. גרו שנים רבות בבני ברק ועברו לעפרה בשנת 1998. נקברו בעפרה. טלפון היסטורי: 02-9972417",
                             children: [
                                 {
                                     id: "shlomit_sochachevski",
@@ -405,7 +442,7 @@
                                         { id: "yitzchak_jr", name: "יצחק", gen: 4, dates: "2011" }
                                     ]
                                 },
-                                { id: "pini_lev", name: "פנחס-אליה (פיני) [1968] לב", gen: 3, dates: "1968", location: "ירושלים / עפרה", bio: "כתובת דואר היסטורית: ת.ד. 6 עפרה 90627 | טלפון היסטורי: 055-244344" },
+                                { id: "pini_lev", name: "פינחס-אליה [1968] לב", gen: 3, dates: "1968", location: "שדרות בן מימון 48, ירושלים / עפרה", bio: "כתובת דואר היסטורית: ת.ד. 6 עפרה 90627 | טלפון היסטורי: 055-244344" },
                                 {
                                     id: "moti_lev",
                                     name: "מרדכי (מוטי) [1970] ואסתר (אתי) לב",
@@ -484,35 +521,23 @@
 
         const familyData = processFamilyData(rawFamilyData);
 
-        // Extract last destination for Google Maps
-        function getGoogleMapsUrl(locationStr) {
-            if (!locationStr) return '';
-            let targetLoc = locationStr;
-            if (targetLoc.includes('←')) {
-                const parts = targetLoc.split('←');
-                targetLoc = parts[parts.length - 1];
-            }
-            // Clean up details in parentheses
-            targetLoc = targetLoc.replace(/\(.*?\)/g, '').trim();
-            return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(targetLoc)}`;
-        }
-
         // Render Tree Recursively
         function createTreeNodeHTML(node) {
             const hasChildren = node.children && node.children.length > 0;
             const badgeClass = `badge-gen-${node.gen}`;
             const genClass = `gen-${node.gen}`;
-            const mapsUrl = getGoogleMapsUrl(node.location);
 
             let html = `
                 <div class="tree-node-wrapper mb-3" data-id="${node.id}" data-gen="${node.gen}">
                     <div id="card-${node.id}" class="card ${genClass} p-3 sm:p-4 rounded-xl shadow-sm hover:shadow-md transition flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200 cursor-pointer" onclick="openDetails('${node.id}')">
                         <div class="flex items-center gap-3">
                             ${hasChildren ? `
-                                <button onclick="event.stopPropagation(); toggleNode('${node.id}')" class="toggle-btn w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
-                                    <span id="icon-${node.id}">▼</span>
+                                <button onclick="event.stopPropagation(); toggleNode('${node.id}')" class="toggle-btn w-8 h-8 rounded-lg bg-blue-100 hover:bg-blue-600 text-blue-700 hover:text-white flex items-center justify-center font-extrabold text-sm shadow-sm transition border border-blue-200" title="הרחב/כווץ">
+                                    <span id="icon-${node.id}" class="transition-transform duration-200 inline-block transform">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                                    </span>
                                 </button>
-                            ` : '<span class="w-6"></span>'}
+                            ` : '<span class="w-8"></span>'}
                             
                             <div>
                                 <div class="flex flex-wrap items-center gap-2">
@@ -522,7 +547,6 @@
                                 ${node.location ? `
                                     <div class="flex items-center gap-1 mt-0.5 text-xs text-slate-500">
                                         <span>📍 ${node.location}</span>
-                                        <a href="${mapsUrl}" target="_blank" onclick="event.stopPropagation()" class="text-blue-500 hover:text-blue-700 font-bold ml-1" title="פתח בגוגל מפות">🗺️</a>
                                     </div>
                                 ` : ''}
                             </div>
@@ -548,28 +572,34 @@
         function toggleNode(id) {
             const container = document.getElementById(`children-${id}`);
             const icon = document.getElementById(`icon-${id}`);
+            const downSvg = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>';
+            const leftSvg = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>';
+            
             if (container) {
                 if (container.classList.contains('hidden')) {
                     container.classList.remove('hidden');
-                    if (icon) icon.innerText = '▼';
+                    if (icon) icon.innerHTML = downSvg;
                 } else {
                     container.classList.add('hidden');
-                    if (icon) icon.innerText = '◀';
+                    if (icon) icon.innerHTML = leftSvg;
                 }
             }
         }
 
         function setAllExpanded(expand) {
             const containers = document.querySelectorAll('.children-container');
+            const downSvg = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>';
+            const leftSvg = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>';
+
             containers.forEach(c => {
                 const id = c.id.replace('children-', '');
                 const icon = document.getElementById(`icon-${id}`);
                 if (expand) {
                     c.classList.remove('hidden');
-                    if (icon) icon.innerText = '▼';
+                    if (icon) icon.innerHTML = downSvg;
                 } else {
                     c.classList.add('hidden');
-                    if (icon) icon.innerText = '◀';
+                    if (icon) icon.innerHTML = leftSvg;
                 }
             });
         }
@@ -642,7 +672,7 @@
                             parent.classList.remove('hidden');
                             const parentId = parent.id.replace('children-', '');
                             const icon = document.getElementById(`icon-${parentId}`);
-                            if (icon) icon.innerText = '▼';
+                            if (icon) icon.innerHTML = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>';
                         }
                         if (parent.classList.contains('tree-node-wrapper')) {
                             parent.style.display = 'block';
@@ -664,7 +694,6 @@
             const node = findNode(familyData, id);
             if (!node) return;
 
-            const mapsUrl = getGoogleMapsUrl(node.location);
             const modalContent = document.getElementById('modalContent');
 
             modalContent.innerHTML = `
@@ -676,14 +705,9 @@
                     </div>
 
                     ${node.location ? `
-                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 flex items-center justify-between">
-                            <div>
-                                <span class="text-xs font-bold text-slate-400 block mb-1">מקום מגורים/הגירה:</span>
-                                <span class="text-sm text-slate-800 font-medium">📍 ${node.location}</span>
-                            </div>
-                            <a href="${mapsUrl}" target="_blank" class="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg text-xs font-bold transition flex items-center gap-1">
-                                <span>מפות</span> 🗺️
-                            </a>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                            <span class="text-xs font-bold text-slate-400 block mb-1">מקום מגורים/הגירה:</span>
+                            <span class="text-sm text-slate-800 font-medium">📍 ${node.location}</span>
                         </div>
                     ` : ''}
 
