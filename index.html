@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משפחת גלזר</title>
+    <title>משפחת גלזר - אילן יוחסין ושורשים</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2316a34a'/><path d='M50 20 C35 20 25 32 25 45 C25 55 32 62 40 68 L40 80 L60 80 L60 68 C68 62 75 55 75 45 C75 32 65 20 50 20 Z' fill='%23ffffff'/><path d='M47 80 L47 50 M53 80 L53 55 M47 60 L38 52 M53 58 L62 50 M47 48 L40 42 M53 46 L60 38' stroke='%2316a34a' stroke-width='3' stroke-linecap='round'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -89,15 +89,11 @@
             <div class="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
                 <div class="flex items-center gap-2">
                     <span class="font-bold text-slate-300">📊 סיכום שושלת:</span>
-                    <span class="bg-blue-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalPersons">194 נפשות</span>
-                    <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalDescendants">193 צאצאים</span>
+                    <span class="bg-blue-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalPersons">סופר...</span>
+                    <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalDescendants">סופר...</span>
                 </div>
                 <div class="flex flex-wrap items-center gap-2" id="genBreakdown">
-                    <span class="px-2 py-0.5 rounded badge-gen-1 font-semibold">דור 1: 12</span>
-                    <span class="px-2 py-0.5 rounded badge-gen-2 font-semibold">דור 2: 15</span>
-                    <span class="px-2 py-0.5 rounded badge-gen-3 font-semibold">דור 3: 37</span>
-                    <span class="px-2 py-0.5 rounded badge-gen-4 font-semibold">דור 4: 74</span>
-                    <span class="px-2 py-0.5 rounded badge-gen-5 font-semibold">דור 5: 55</span>
+                    <!-- Dynamic Generation Breakdown -->
                 </div>
             </div>
         </div>
@@ -515,16 +511,15 @@
         const expandedState = {};
 
         function calculateStats(node) {
-            let totalPersons = 0;
             let totalDescendants = 0;
             const genCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
             const countedIds = new Set();
-
+            
+            // ספירה מדויקת ללא כפילויות של צמתים
             function traverse(currNode) {
                 if (!currNode || countedIds.has(currNode.id)) return;
                 countedIds.add(currNode.id);
 
-                totalPersons++;
                 if (currNode.gen >= 1 && currNode.gen <= 5) {
                     genCounts[currNode.gen]++;
                     totalDescendants++;
@@ -537,13 +532,14 @@
                 }
             }
 
-            // Start traversing from root
-            countedIds.add(node.id);
             if (node.children) {
                 node.children.forEach(traverse);
             }
 
-            return { totalPersons: countedIds.size, totalDescendants, genCounts };
+            // סך הנפשות מורכב מ-2 המייסדים (דור 0) + כלל הצאצאים בכל הדורות
+            const totalPersons = 2 + totalDescendants;
+
+            return { totalPersons, totalDescendants, genCounts };
         }
 
         function initInitialState(node) {
@@ -571,7 +567,7 @@
                                  (node.gen >= 4 ? 'text-xs sm:text-sm font-bold text-slate-900' : 'text-base sm:text-lg font-bold text-slate-900');
 
             let infoButtonContent = isUnknownNode ? `
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
@@ -584,10 +580,14 @@
                 </svg>
             `;
 
+            let infoButtonClass = isUnknownNode ? 
+                "w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-300 rounded-xl transition flex items-center justify-center shadow-sm" : 
+                "w-9 h-9 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-xl transition flex items-center justify-center shadow-sm";
+
             let html = `
                 <div class="flex items-start justify-between gap-3">
                     <div class="flex items-center gap-2 shrink-0">
-                        <button onclick="openModal('${node.id}'); event.stopPropagation();" class="w-9 h-9 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-xl transition flex items-center justify-center shadow-sm" title="מידע נוסף">
+                        <button onclick="openModal('${node.id}'); event.stopPropagation();" class="${infoButtonClass}" title="מידע נוסף">
                             ${infoButtonContent}
                         </button>
                         <button onclick="openEditModal('${node.id}'); event.stopPropagation();" class="w-9 h-9 bg-slate-100 hover:bg-amber-100 text-slate-600 hover:text-amber-700 border border-slate-200 hover:border-amber-300 rounded-xl transition flex items-center justify-center shadow-sm" title="הצעת עדכון או תיקון פרטים">
@@ -696,8 +696,8 @@
         }
 
         function setupUpdateSubmission() {
-            const adminPhone = "972545244344"; // מספר הוואטסאפ שלך
-            const adminEmail = "pinilev@gmail.com"; // האימייל שלך
+            const adminPhone = "972545244344";
+            const adminEmail = "pinilev@gmail.com";
 
             function getUpdateData() {
                 const node = findNodeById(rawFamilyData, currentEditingNodeId);
@@ -750,11 +750,8 @@
                              `פירוט:\n${data.details}`;
                 
                 const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                // ניסיון פתיחת אימייל ישירה
                 window.location.href = mailtoLink;
 
-                // גיבוי חכם במקרה שהדפדפן חוסם mailto: פתוח (מציג את הטקסט להעתקה מהירה)
                 setTimeout(() => {
                     const existingModal = document.getElementById("emailFallbackModal");
                     if (existingModal) existingModal.remove();
@@ -944,6 +941,15 @@
             const stats = calculateStats(rawFamilyData);
             document.getElementById("totalPersons").textContent = `${stats.totalPersons} נפשות`;
             document.getElementById("totalDescendants").textContent = `${stats.totalDescendants} צאצאים`;
+
+            const genBreakdownEl = document.getElementById("genBreakdown");
+            genBreakdownEl.innerHTML = `
+                <span class="px-2 py-0.5 rounded badge-gen-1 font-semibold">דור 1: ${stats.genCounts[1]}</span>
+                <span class="px-2 py-0.5 rounded badge-gen-2 font-semibold">דור 2: ${stats.genCounts[2]}</span>
+                <span class="px-2 py-0.5 rounded badge-gen-3 font-semibold">דור 3: ${stats.genCounts[3]}</span>
+                <span class="px-2 py-0.5 rounded badge-gen-4 font-semibold">דור 4: ${stats.genCounts[4]}</span>
+                <span class="px-2 py-0.5 rounded badge-gen-5 font-semibold">דור 5: ${stats.genCounts[5]}</span>
+            `;
 
             initInitialState(rawFamilyData);
             renderTree();
