@@ -12,12 +12,12 @@
             font-family: 'Assistant', sans-serif;
             background-color: #f8fafc;
         }
-        .gen-0 { border-top: 5px solid #1e293b; background-color: #ffffff; }
-        .gen-1 { border-top: 5px solid #2563eb; background-color: #ffffff; }
-        .gen-2 { border-top: 5px solid #16a34a; background-color: #ffffff; }
-        .gen-3 { border-top: 5px solid #d97706; background-color: #ffffff; }
-        .gen-4 { border-top: 5px solid #9333ea; background-color: #ffffff; }
-        .gen-5 { border-top: 5px solid #db2777; background-color: #ffffff; }
+        .gen-0 { border-top: 4px solid #1e293b; background-color: #ffffff; }
+        .gen-1 { border-top: 4px solid #2563eb; background-color: #ffffff; }
+        .gen-2 { border-top: 4px solid #16a34a; background-color: #ffffff; }
+        .gen-3 { border-top: 4px solid #d97706; background-color: #ffffff; }
+        .gen-4 { border-top: 4px solid #9333ea; background-color: #ffffff; }
+        .gen-5 { border-top: 4px solid #db2777; background-color: #ffffff; }
 
         .badge-gen-0 { background-color: #1e293b; color: white; }
         .badge-gen-1 { background-color: #2563eb; color: white; }
@@ -32,7 +32,7 @@
         .tree-line::before {
             content: '';
             position: absolute;
-            right: -16px;
+            right: -12px;
             top: 0;
             bottom: 0;
             width: 2px;
@@ -40,59 +40,59 @@
         }
 
         .search-match {
-            outline: 3px solid #eab308 !important;
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4) !important;
+            outline: 2px solid #eab308 !important;
+            box-shadow: 0 0 10px rgba(234, 179, 8, 0.4) !important;
             background-color: #fefce8 !important;
         }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen text-slate-800">
+<body class="bg-slate-100 min-h-screen text-slate-800 text-sm">
 
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-md">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="max-w-7xl mx-auto px-3 py-2.5 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-2.5">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">משפחת גלזר</h1>
+                    <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">משפחת גלזר</h1>
                 </div>
             </div>
             
             <!-- Controls -->
-            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
-                <div class="relative flex-1 md:w-64">
-                    <input type="text" id="searchInput" placeholder="חיפוש שם, מקום או פרט..." 
-                        class="w-full pl-8 pr-9 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
-                    <svg class="w-4 h-4 absolute right-3 top-2.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
+                <div class="relative flex-1 md:w-56">
+                    <input type="text" id="searchInput" placeholder="חיפוש מהיר..." 
+                        class="w-full pl-7 pr-8 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition">
+                    <svg class="w-3.5 h-3.5 absolute right-2.5 top-2 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
-                    <button id="clearSearchBtn" class="hidden absolute left-2.5 top-2.5 text-slate-400 hover:text-slate-600 transition p-0.5 rounded-full hover:bg-slate-200" title="ניקוי חיפוש">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="clearSearchBtn" class="hidden absolute left-2 top-2 text-slate-400 hover:text-slate-600 transition p-0.5 rounded-full hover:bg-slate-200" title="ניקוי חיפוש">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
 
-                <button id="expandAllBtn" class="px-3 py-2 text-xs font-semibold bg-slate-200 hover:bg-slate-300 rounded-lg transition">הרחב הכל</button>
-                <button id="collapseAllBtn" class="px-3 py-2 text-xs font-semibold bg-slate-200 hover:bg-slate-300 rounded-lg transition">כווץ הכל</button>
+                <button id="expandAllBtn" class="px-2.5 py-1.5 text-[11px] font-semibold bg-slate-200 hover:bg-slate-300 rounded-md transition">הרחב הכל</button>
+                <button id="collapseAllBtn" class="px-2.5 py-1.5 text-[11px] font-semibold bg-slate-200 hover:bg-slate-300 rounded-md transition">כווץ הכל</button>
             </div>
         </div>
     </header>
 
     <!-- Dynamic Stats Bar Header -->
-    <section class="bg-slate-800 text-white py-3 shadow-inner border-b border-slate-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
-                <div class="flex items-center gap-2">
-                    <span class="font-bold text-slate-300">📊 סיכום שושלת:</span>
-                    <span class="bg-blue-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalPersons">סופר...</span>
-                    <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-extrabold" id="totalDescendants">סופר...</span>
+    <section class="bg-slate-800 text-white py-2 shadow-inner border-b border-slate-700">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
+                <div class="flex items-center gap-1.5">
+                    <span class="font-bold text-slate-300">📊 שושלת:</span>
+                    <span class="bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold" id="totalPersons">סופר...</span>
+                    <span class="bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold" id="totalDescendants">סופר...</span>
                 </div>
-                <div class="flex flex-wrap items-center gap-2" id="genBreakdown">
+                <div class="flex flex-wrap items-center gap-1" id="genBreakdown">
                     <!-- Dynamic Generation Breakdown -->
                 </div>
             </div>
@@ -100,16 +100,16 @@
     </section>
 
     <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-        <div id="searchResultsSummary" class="hidden mb-4 p-3 bg-blue-50 border border-blue-200 text-blue-800 rounded-lg text-sm"></div>
-        <div id="treeContainer" class="space-y-4"></div>
+    <main class="max-w-7xl mx-auto px-3 py-4 sm:px-6 lg:px-8">
+        <div id="searchResultsSummary" class="hidden mb-3 p-2.5 bg-blue-50 border border-blue-200 text-blue-800 rounded-md text-xs"></div>
+        <div id="treeContainer" class="space-y-2.5"></div>
     </main>
 
     <!-- Detail Modal -->
-    <div id="detailModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
-            <button id="closeModal" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-2 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div id="detailModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-xl max-w-md w-full p-5 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200 max-h-[85vh] overflow-y-auto">
+            <button id="closeModal" class="absolute top-3 left-3 text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-1.5 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
@@ -118,35 +118,35 @@
     </div>
 
     <!-- Edit / Suggest Update Modal -->
-    <div id="editModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
-            <button id="closeEditModal" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-2 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div id="editModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-xl max-w-md w-full p-5 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200 max-h-[85vh] overflow-y-auto">
+            <button id="closeEditModal" class="absolute top-3 left-3 text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-1.5 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <div class="space-y-4">
+            <div class="space-y-3">
                 <div class="flex items-center gap-2">
-                    <span class="bg-amber-100 text-amber-800 p-2 rounded-xl text-lg">✏️</span>
+                    <span class="bg-amber-100 text-amber-800 p-1.5 rounded-lg text-base">✏️</span>
                     <div>
-                        <h2 class="text-xl font-extrabold text-slate-900">הצעת עדכון או הוספת פרטים</h2>
-                        <p class="text-xs text-slate-500" id="editModalPersonName"></p>
+                        <h2 class="text-base font-extrabold text-slate-900">הצעת עדכון או הוספת פרטים</h2>
+                        <p class="text-[11px] text-slate-500" id="editModalPersonName"></p>
                     </div>
                 </div>
 
-                <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-xs text-amber-900">
-                    ניתן לעדכן תאריכים, מיקומים, ביוגרפיה או להוסיף צאצאים חדשים. הטקסט יישלח ישירות למנהל השושלת בוואטסאפ או באימייל.
+                <div class="bg-amber-50 border border-amber-200 p-2.5 rounded-md text-[11px] text-amber-900">
+                    ניתן לעדכן תאריכים, מיקומים, ביוגרפיה או להוסיף צאצאים חדשים. הטקסט יישלח ישירות למנהל השושלת.
                 </div>
 
-                <div class="space-y-3">
+                <div class="space-y-2.5">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">השם שלך (מדווח הפרטים):</label>
-                        <input type="text" id="reporterName" placeholder="הכנס את שמך המלא" class="w-full p-2.5 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">השם שלך (מדווח הפרטים):</label>
+                        <input type="text" id="reporterName" placeholder="הכנס את שמך המלא" class="w-full p-2 text-xs bg-slate-50 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500 focus:outline-none">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">סוג העדכון / התיקון:</label>
-                        <select id="updateType" class="w-full p-2.5 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">סוג העדכון / התיקון:</label>
+                        <select id="updateType" class="w-full p-2 text-xs bg-slate-50 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500 focus:outline-none">
                             <option value="תיקון פרטים / תאריכים">תיקון פרטים קיימים או תאריכים</option>
                             <option value="הוספת ביוגרפיה / מידע היסטורי">הוספת ביוגרפיה או סיפור היסטורי</option>
                             <option value="הוספת צאצא / בן משפחה חדש">הוספת צאצא / בן משפחה חדש</option>
@@ -155,16 +155,16 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">פירוט העדכון / הנתונים החדשים:</label>
-                        <textarea id="updateDetails" rows="4" placeholder="נא לכתוב בפירוט את המידע שברצונך להוסיף או לתקן..." class="w-full p-2.5 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">פירוט העדכון / הנתונים החדשים:</label>
+                        <textarea id="updateDetails" rows="3" placeholder="נא לכתוב בפירוט את המידע..." class="w-full p-2 text-xs bg-slate-50 border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500 focus:outline-none"></textarea>
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-2 pt-2">
-                    <button id="sendWhatsappBtn" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-sm">
+                <div class="flex flex-col sm:flex-row gap-2 pt-1">
+                    <button id="sendWhatsappBtn" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-3 rounded-lg transition flex items-center justify-center gap-1.5 text-xs shadow-sm">
                         <span>💬 שליחה בוואטסאפ</span>
                     </button>
-                    <button id="sendEmailBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-sm">
+                    <button id="sendEmailBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg transition flex items-center justify-center gap-1.5 text-xs shadow-sm">
                         <span>✉️ שליחה באימייל</span>
                     </button>
                 </div>
@@ -299,9 +299,9 @@
                         }
                     ]
                 },
-                { id: "velve_glazer", name: "2. וולווה גלזר", gen: 1, location: "ארה\"ב", bio: "היגר לארה\"ב." },
+                { id: "velve_glazer", name: "2. וולווה גלזר", gen: 1, location: "ארה\"ב", bio: "היגר לארה\"ב. ייתכן שהיה רופא של אחד מהנשיאים." },
                 { id: "shimon_glazer", name: "3. שמעון גלזר", gen: 1, bio: "התנגד לפוגרום באומץ. כנראה היגר לארה\"ב." },
-                { id: "dvora_lea_l", name: "4. דבורה־לאה לוויתן", gen: 1, dates: "18-- - 28.2.1961", location: "ירושלים", bio: "איבדה בליטא את השימוש בידה בניסיון להגן על אביה במהלך פוגרום. למרות נכותה הצליחה לרקום ביד אחת. עלתה לישראל ונקברה בסנהדריה בירושלים." },
+                { id: "dvora_lea_l", name: "4. דבורה־לאה לוויתן", gen: 1, dates: "18-- - 28.2.1961", location: "ירושלים / לונדון", bio: "איבדה בליטא את השימוש בידה בניסיון להגן על אביה במהלך פוגרום (למרות זאת הצליחה לרקום ביד אחת). היתה נשואה, התגוררה תקופה בלונדון ללא ילדים. עלתה לישראל, שם יצחק לב שימש כאפוטרופוס שלה. נפטרה ב-28 בפברואר 1961 ונקברה בסנהדריה בירושלים (בסמוך לבעלה)." },
                 {
                     id: "pesia_alperovich",
                     name: "5. פסיה וברוך אלפרוביץ'",
@@ -442,8 +442,8 @@
                     name: "10. פייגה־מיכל ונתן־נטע לב",
                     gen: 1,
                     dates: "פייגה־מיכל: 1883 - 1974 | נתן־נטע: 1883 - 1939",
-                    location: "בני ברק (במקור רוסיה הסובייטית)",
-                    bio: "פייגה־מיכל (בתם של יהושע־צבי ופרידע־רחל גלזר) נישאה לנתן־נטע (סוחר עצים ועורות) בשנת תרע\"ה (1914/1915) במינסק. תחת המשטר הסובייטי, פייגה־מיכל גורשה עם ילדיה לבניין משרד הפנים הסובייטי (הקג\"ב) ונאלצה לעבוד בעבודת פרך במטבח הנחתה, תוך שהיא שומרת כשרות במחתרת (מחבאת כלים מתחת למיטה) ואופה מצות בסתר מול 'הלוח המהפכני' הסובייטי. נתן־נטע נעצר באשמת פולחן דתי ונשלח פעמים רבות לעבודת פרך בסיביר. המשפחה מכרה מכונה להכנת גומי ששמרו שנים כדי לממן את עלייתם ארצה ב-1936. נקברו בהר הזיתים (הסיפור תועד על ידי נכדתם אורה גליקמן).",
+                    location: "בני ברק (במקור רוסיה / ליטא / בלארוס)",
+                    bio: "פייגה־מיכל (בתם של יהושע־צבי ופרידע־רחל גלזר) נישאה לנתן־נטע (סוחר עצים בליטא) בחנוכה שנת תרע\"ה (1914) במינסק, בלארוס. תחילה גרו באורנבורג (סיביר) ולאחר מכן במלאחובקה (סמוך למוסקבה). פייגה־מיכל נסעה לאנגליה למעלה משנה יחד עם שני הבנים ב-1927 וחזרה למלאחובקה. תחת המשטר הסובייטי גורשה לבניין משרד הפנים (הקג\"ב) ונאלצה לעבוד בעבודת פרך במטבח הנחתה, תוך שהיא שומרת כשרות בסתר ואופה מצות. נתן־נטע נעצר באשמת פולחן דתי ונשלח פעמים רבות לעבודת פרך בסיביר. בשנת 1936 קיבלו באורח נסי אישור לצאת מרוסיה, מכרו מכונה להכנת גומי ששמרו שנים למימון המסע, נסעו דרך אודסה (אוקראינה) ועלו לארץ ישראל. תחילה התיישבו בתל אביב ולאחר מכן בני ברק. נקברו בהר הזיתים (הסיפור תועד על ידי נכדתם אורה גליקמן).",
                     children: [
                         {
                             id: "yehosua_tzvi_lev",
@@ -638,20 +638,20 @@
             
             const card = document.createElement("div");
             card.id = `node-${node.id}`;
-            card.className = `rounded-xl shadow-sm border border-slate-200 p-4 transition-all duration-200 gen-${node.gen} mb-3 relative`;
+            card.className = `rounded-lg shadow-sm border border-slate-200 p-2.5 transition-all duration-200 gen-${node.gen} mb-2 relative`;
 
-            const titleSizeClass = node.id === 'root' ? 'text-lg sm:text-xl font-black text-slate-900 tracking-wide' : 
-                                 node.gen === 0 ? 'text-base sm:text-lg font-black text-slate-900 tracking-wide' : 
-                                 (node.gen >= 4 ? 'text-xs sm:text-sm font-bold text-slate-900' : 'text-base sm:text-lg font-bold text-slate-900');
+            const titleSizeClass = node.id === 'root' ? 'text-sm sm:text-base font-black text-slate-900 tracking-wide' : 
+                                 node.gen === 0 ? 'text-xs sm:text-sm font-black text-slate-900 tracking-wide' : 
+                                 (node.gen >= 4 ? 'text-[11px] font-bold text-slate-900' : 'text-xs sm:text-sm font-bold text-slate-900');
 
             let infoButtonContent = isUnknownNode ? `
-                <svg class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
             ` : `
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="16" x2="12" y2="12"></line>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -659,36 +659,36 @@
             `;
 
             let infoButtonClass = isUnknownNode ? 
-                "w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-300 rounded-xl transition flex items-center justify-center shadow-sm" : 
-                "w-9 h-9 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-xl transition flex items-center justify-center shadow-sm";
+                "w-7 h-7 bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-300 rounded-lg transition flex items-center justify-center shadow-sm" : 
+                "w-7 h-7 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-lg transition flex items-center justify-center shadow-sm";
 
             let html = `
-                <div class="flex items-start justify-between gap-3">
-                    <div class="flex items-center gap-2 shrink-0">
+                <div class="flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-1.5 shrink-0">
                         <button onclick="openModal('${node.id}'); event.stopPropagation();" class="${infoButtonClass}" title="מידע נוסף">
                             ${infoButtonContent}
                         </button>
-                        <button onclick="openEditModal('${node.id}'); event.stopPropagation();" class="w-9 h-9 bg-slate-100 hover:bg-amber-100 text-slate-600 hover:text-amber-700 border border-slate-200 hover:border-amber-300 rounded-xl transition flex items-center justify-center shadow-sm" title="הצעת עדכון או תיקון פרטים">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <button onclick="openEditModal('${node.id}'); event.stopPropagation();" class="w-7 h-7 bg-slate-100 hover:bg-amber-100 text-slate-600 hover:text-amber-700 border border-slate-200 hover:border-amber-300 rounded-lg transition flex items-center justify-center shadow-sm" title="הצעת עדכון">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
                             </svg>
                         </button>
                     </div>
 
-                    <div class="flex-1 cursor-pointer flex flex-col gap-1" onclick="openModal('${node.id}')">
-                        <div class="flex items-center gap-2">
+                    <div class="flex-1 cursor-pointer flex flex-col gap-0.5" onclick="openModal('${node.id}')">
+                        <div class="flex items-center gap-1.5 flex-wrap">
                             ${node.gen > 0 ? `
-                                <span class="text-xs font-bold px-2 py-0.5 rounded-md badge-gen-${node.gen} shrink-0">
-                                    דור ${node.gen}
+                                <span class="text-[10px] font-bold px-1.5 py-0.2 rounded badge-gen-${node.gen} shrink-0">
+                                    ד׳ ${node.gen}
                                 </span>
                             ` : ''}
-                            <h3 class="${titleSizeClass} leading-snug hover:text-blue-600 transition">
+                            <h3 class="${titleSizeClass} leading-tight hover:text-blue-600 transition">
                                 ${node.name}
                             </h3>
                         </div>
 
                         ${node.location ? `
-                            <div class="text-xs text-slate-600 font-medium flex items-center gap-1 mt-0.5 pr-1">
+                            <div class="text-[11px] text-slate-600 font-medium flex items-center gap-1 mt-0.5">
                                 <span>📍</span> <span>${node.location}</span>
                             </div>
                         ` : ''}
@@ -696,8 +696,8 @@
 
                     ${hasChildren ? `
                         <div class="shrink-0 flex items-center self-center">
-                            <button onclick="toggleNode('${node.id}', event)" class="w-9 h-9 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-800 hover:text-slate-950 transition flex items-center justify-center border-2 border-slate-300 shadow-sm" title="${isExpanded ? 'כווץ ענף' : 'הרחב ענף'}">
-                                <svg class="w-4 h-4 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <button onclick="toggleNode('${node.id}', event)" class="w-7 h-7 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-800 transition flex items-center justify-center border border-slate-300 shadow-sm" title="${isExpanded ? 'כווץ' : 'הרחב'}">
+                                <svg class="w-3.5 h-3.5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </button>
@@ -710,7 +710,7 @@
 
             if (hasChildren) {
                 const childrenContainer = document.createElement("div");
-                childrenContainer.className = `pr-4 sm:pr-6 mt-3 space-y-2 tree-line ${isExpanded ? '' : 'hidden'}`;
+                childrenContainer.className = `pr-3 sm:pr-4 mt-2 space-y-1.5 tree-line ${isExpanded ? '' : 'hidden'}`;
                 childrenContainer.id = `children-${node.id}`;
                 
                 node.children.forEach(child => {
@@ -797,10 +797,10 @@
 
                 const note = document.createElement("div");
                 note.id = "customNotification";
-                note.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-lg z-50 text-sm animate-in fade-in";
+                note.className = "fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white px-3 py-2 rounded-lg shadow-lg z-50 text-xs animate-in fade-in";
                 note.textContent = text;
                 document.body.appendChild(note);
-                setTimeout(() => note.remove(), 3000);
+                setTimeout(() => note.remove(), 2500);
             }
 
             document.getElementById("sendWhatsappBtn").addEventListener("click", () => {
@@ -836,19 +836,19 @@
 
                     const modal = document.createElement("div");
                     modal.id = "emailFallbackModal";
-                    modal.className = "fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in";
+                    modal.className = "fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 animate-in fade-in";
                     modal.innerHTML = `
-                        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border border-slate-100 space-y-4" dir="rtl">
-                            <h3 class="text-lg font-bold text-slate-900">✉️ שליחת אימייל למנהל השושלת</h3>
-                            <p class="text-xs text-slate-600">אם תוכנת האימייל שלך לא נפתחה אוטומטית, באפשרותך להעתיק את הפרטים ולשלוח לכתובת: <strong class="text-blue-600">${adminEmail}</strong></p>
+                        <div class="bg-white rounded-xl max-w-sm w-full p-4 shadow-2xl relative border border-slate-100 space-y-3" dir="rtl">
+                            <h3 class="text-sm font-bold text-slate-900">✉️ שליחת אימייל למנהל השושלת</h3>
+                            <p class="text-[11px] text-slate-600">אם תוכנת האימייל לא נפתחה, באפשרותך להעתיק את הפרטים ולשלוח לכתובת: <strong class="text-blue-600">${adminEmail}</strong></p>
                             
-                            <textarea readonly rows="6" class="w-full p-3 text-xs bg-slate-50 border border-slate-300 rounded-xl font-mono select-all focus:outline-none">${body}</textarea>
+                            <textarea readonly rows="5" class="w-full p-2.5 text-[11px] bg-slate-50 border border-slate-300 rounded-lg font-mono select-all focus:outline-none">${body}</textarea>
                             
-                            <div class="flex gap-2 pt-2">
-                                <button id="copyEmailTextBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl transition text-xs shadow-sm">
-                                    📋 העתק טקסט ללוח
+                            <div class="flex gap-2 pt-1">
+                                <button id="copyEmailTextBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg transition text-xs shadow-sm">
+                                    📋 העתק טקסט
                                 </button>
-                                <button id="closeEmailFallback" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 px-4 rounded-xl transition text-xs">
+                                <button id="closeEmailFallback" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-3 rounded-lg transition text-xs">
                                     סגור
                                 </button>
                             </div>
@@ -876,13 +876,11 @@
 
             const modalContent = document.getElementById("modalContent");
             
-            // הגדרת שמות מקוצרים ספציפיים לצאצאים הישירים של הדור הראשון בחלון המידע של השורש
             let childrenDisplayHtml = '';
             if (node.children && node.children.length > 0) {
                 let formattedChildren = node.children.map(c => {
                     let displayName = c.name;
                     if (nodeId === 'root') {
-                        // ניקוי שמות הצאצאים בדור 0 לחלון המידע בלבד
                         if (c.id === 'malka_rivkin') displayName = '1. מלכה ריבקין';
                         else if (c.id === 'velve_glazer') displayName = '2. וולווה גלזר';
                         else if (c.id === 'shimon_glazer') displayName = '3. שמעון גלזר';
@@ -895,13 +893,13 @@
                         else if (c.id === 'faige_michel_lev') displayName = '10. פייגה־מיכל לב';
                         else if (c.id === 'leibe_glazer') displayName = '11. לייבע גלזר';
                     }
-                    return `<span class="bg-slate-100 text-slate-800 text-xs px-2.5 py-1 rounded-lg border border-slate-200 font-medium">${displayName}</span>`;
+                    return `<span class="bg-slate-100 text-slate-800 text-[11px] px-2 py-0.5 rounded border border-slate-200 font-medium">${displayName}</span>`;
                 }).join('');
 
                 childrenDisplayHtml = `
-                    <div class="pt-2">
-                        <h4 class="font-bold text-sm text-slate-700 mb-2">👨‍👩‍👧‍👦 צאצאים ישירים (${node.children.length}):</h4>
-                        <div class="flex flex-wrap gap-1.5">
+                    <div class="pt-1.5">
+                        <h4 class="font-bold text-xs text-slate-700 mb-1.5">👨‍👩‍👧‍👦 צאצאים ישירים (${node.children.length}):</h4>
+                        <div class="flex flex-wrap gap-1">
                             ${formattedChildren}
                         </div>
                     </div>
@@ -909,31 +907,31 @@
             }
 
             modalContent.innerHTML = `
-                <div class="space-y-4">
+                <div class="space-y-3">
                     <div class="flex items-center gap-2">
                         ${node.gen > 0 ? `
-                            <span class="text-xs font-bold px-2.5 py-1 rounded-md badge-gen-${node.gen}">
+                            <span class="text-[11px] font-bold px-2 py-0.5 rounded badge-gen-${node.gen}">
                                 דור ${node.gen}
                             </span>
                         ` : ''}
-                        <h2 class="text-xl font-extrabold text-slate-900">${node.name}</h2>
+                        <h2 class="text-base font-extrabold text-slate-900">${node.name}</h2>
                     </div>
 
                     ${node.dates ? `
-                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-sm">
-                            <span class="font-bold text-slate-700">🗓️ תאריכים ושנות חיים:</span> ${node.dates}
+                        <div class="bg-slate-50 p-2.5 rounded-md border border-slate-200 text-xs">
+                            <span class="font-bold text-slate-700">🗓️ תאריכים:</span> ${node.dates}
                         </div>
                     ` : ''}
 
                     ${node.location ? `
-                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-sm">
-                            <span class="font-bold text-slate-700">📍 מיקומים ומסלול הגירה:</span> ${node.location}
+                        <div class="bg-slate-50 p-2.5 rounded-md border border-slate-200 text-xs">
+                            <span class="font-bold text-slate-700">📍 מיקומים:</span> ${node.location}
                         </div>
                     ` : ''}
 
                     ${node.bio ? `
-                        <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-100 text-sm leading-relaxed text-slate-800">
-                            <span class="font-bold text-blue-900 block mb-1">📜 ביוגרפיה ואירועים היסטוריים:</span>
+                        <div class="bg-blue-50/60 p-3 rounded-lg border border-blue-100 text-xs leading-relaxed text-slate-800">
+                            <span class="font-bold text-blue-900 block mb-1">📜 ביוגרפיה והיסטוריה:</span>
                             ${node.bio}
                         </div>
                     ` : ''}
@@ -1048,11 +1046,11 @@
 
             const genBreakdownEl = document.getElementById("genBreakdown");
             genBreakdownEl.innerHTML = `
-                <span class="px-2 py-0.5 rounded badge-gen-1 font-semibold">דור 1: ${stats.genCounts[1]}</span>
-                <span class="px-2 py-0.5 rounded badge-gen-2 font-semibold">דור 2: ${stats.genCounts[2]}</span>
-                <span class="px-2 py-0.5 rounded badge-gen-3 font-semibold">דור 3: ${stats.genCounts[3]}</span>
-                <span class="px-2 py-0.5 rounded badge-gen-4 font-semibold">דור 4: ${stats.genCounts[4]}</span>
-                <span class="px-2 py-0.5 rounded badge-gen-5 font-semibold">דור 5: ${stats.genCounts[5]}</span>
+                <span class="px-1.5 py-0.2 rounded badge-gen-1 font-semibold">ד1: ${stats.genCounts[1]}</span>
+                <span class="px-1.5 py-0.2 rounded badge-gen-2 font-semibold">ד2: ${stats.genCounts[2]}</span>
+                <span class="px-1.5 py-0.2 rounded badge-gen-3 font-semibold">ד3: ${stats.genCounts[3]}</span>
+                <span class="px-1.5 py-0.2 rounded badge-gen-4 font-semibold">ד4: ${stats.genCounts[4]}</span>
+                <span class="px-1.5 py-0.2 rounded badge-gen-5 font-semibold">ד5: ${stats.genCounts[5]}</span>
             `;
 
             initInitialState(rawFamilyData);
